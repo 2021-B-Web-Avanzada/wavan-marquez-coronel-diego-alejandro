@@ -80,3 +80,60 @@ const DIego = {
     mascotas : ['Zeus','Hannah']
 }
 console.log(DIego)
+DIego.apellido
+DIego.casado
+DIego["nombre"] = "diego"
+DIego.sueldo;
+console.log(DIego.sueldo)
+DIego["sueldo"] = 1.9
+console.log(DIego.sueldo)
+console.log(Object.keys(DIego))
+console.log(Object.values(DIego))
+delete DIego.nombre //Eliminar la llave nombre
+console.log(DIego)
+
+// Variables por valor o referencia
+
+// Variables por valor son las primitivas
+let edadDiego = 24;
+let edadVicente = edadDiego; //Guardamos una primitiva en otra variable
+                            // Vaiables por valor
+console.log(edadDiego) //24
+console.log(edadVicente) //24
+edadDiego = edadVicente + 1;
+console.log(edadDiego) //25
+console.log(edadVicente) //24
+
+// Variables por referencia object ({} [])
+// let juan = {
+//     nombre: "juan"
+// }
+// let lenin = juan
+// console.log(juan)
+// console.log(lenin)
+// lenin.nombre = "Lenin"
+// console.log(juan)
+// console.log(lenin)
+// delete juan.nombre
+// console.log(juan)
+// console.log(lenin)
+//Clonar objetos
+
+let rafael = {
+    nombre: "Rafael"
+}
+let lenin = Object.assign({}, rafael)
+console.log(rafael)
+console.log(lenin)
+lenin.nombre = "Lenin"
+delete rafael.nombre;
+console.log(rafael);
+console.log(lenin);
+let arregloNumeros = [1,2,3,4,5];
+let arregloClonado = Object.assign([], arregloNumeros)
+console.log(arregloNumeros)
+console.log(arregloClonado)
+arregloNumeros[0] = 200
+arregloClonado[0] = 100
+console.log(arregloNumeros)
+console.log(arregloClonado)
