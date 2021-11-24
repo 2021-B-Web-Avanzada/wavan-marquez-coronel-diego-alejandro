@@ -135,3 +135,17 @@ const respuestaEvery = arreglo
         }
     )
 console.log('respuestaEvery', respuestaEvery);
+//REDUCE izq -> der se puede poner cualquier tipo de calculo
+//REDUCE RIGHT der -> izq
+// 100 <3 Puntos de vida
+// 100 - 1 - 2- 5 -6 -7 -1 -3 =
+// 0 1 + 2+ 3+ 4+ 6+ 7 + 3 =
+const respuestaReduce = arreglo
+    .reduce(
+        function (valorAcumulado,valorActual,indice,arreglo){
+            return (valorAcumulado + valorActual.nota);
+        },
+        100 // Acumulador
+    );
+console.log('respuestaReduce', respuestaReduce);
+
