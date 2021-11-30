@@ -21,3 +21,20 @@ let objetoPrueba = {a: '1', b:'2', c: '3'}
 for (let llave in objetoPrueba) {
     console.log('llave', llave)
 }
+
+arreglo.push(11) // Anadir al final un elemento
+// [6,7,8,9,10,11]
+arreglo.pop() // Eliminar al final un elemento
+// [6,7,8,9,10]
+arreglo.unshift(5) //Anadir al principio del arreglo
+// [5,6,7,8,9,10]
+console.log(arreglo)
+// agregar en el indice 0
+arreglo.splice(0,0,4)
+console.log(arreglo)
+// splice(indice, numero de elementos eliminados, ...items a agregar)
+// EJ arreglo.splice(0,3,1,2,3,4,5,6
+const indice = arreglo.indexOf(9) // Encuentra el primer elemento y devuelve el indice
+arreglo.splice(indice,2)
+//[4,5,6,7,8,9,10]
+console.log(arreglo)
