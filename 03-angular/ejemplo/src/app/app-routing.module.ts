@@ -7,6 +7,10 @@ import {RutaInicioComponent} from "./ruta-login/ruta-inicio/ruta-inicio.componen
 import {RutaAppComponent} from "./ruta-login/ruta-app/ruta-app.component";
 import {RutaUsuarioComponent} from "./ruta-login/ruta-usuario/ruta-usuario.component";
 import {RutaPostComponent} from "./ruta-login/ruta-post/ruta-post.component";
+import {EstaLogeadoGuard} from "./esta-logeado.guard";
+import {EsAdministradorGuard} from "./es-administrador.guard";
+import {RutaBodegaComponent} from "./ruta-login/ruta-bodega/ruta-bodega.component";
+import {RutaReporteComponent} from "./ruta-login/ruta-reporte/ruta-reporte.component";
 // login
 // inicio
 // app
@@ -30,6 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
+    canActivate: [ EstaLogeadoGuard ],
     component: RutaInicioComponent,
   },
   {
@@ -42,7 +47,26 @@ const routes: Routes = [
       },
       {
         path: 'post',
-        component: RutaPostComponent
+        component: RutaPostComponent,
+        canActivate: [EsAdministradorGuard]
+      },
+      {
+        path: 'lazy-inventario',
+        loadChildren: () => import('./modulos/modulo-inventario/modulo-inventario.module')
+          .then(m => m.ModuloInventarioModule)
+      },
+      { // modulo-inventario-routing.module.ts
+        path: 'bodega',
+        component: RutaBodegaComponent
+      },
+      {
+        path: 'reporte',
+        component: RutaReporteComponent
+      },
+      {
+        path: '',
+        redirectTo: 'bodega',
+        pathMatch: 'full'
       },
     ]
   },
