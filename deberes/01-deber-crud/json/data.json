@@ -1,0 +1,17 @@
+[
+    {
+        "id": "05",
+        "location": "GUAYAQUIL",
+        "responsable": "Diego Marquez",
+        "openingHour": "2021-12-16T07:15:10.212Z",
+        "products": [
+            {
+                "Serie": "01-123-968574",
+                "name": "Arduino",
+                "brand": "Arduino",
+                "datePurchase": "2021-12-16T07:25:06.763Z",
+                "available": true
+            }
+        ]
+    }
+]
