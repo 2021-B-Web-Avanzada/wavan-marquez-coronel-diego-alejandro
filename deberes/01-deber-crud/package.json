@@ -1,36 +1,15 @@
 {
-
-  "name": "01_deber_crud",
+  "name": "crudjs",
   "version": "1.0.0",
-  "description": "CRUD de entidades (tienda de electronica y productos)",
-  "main": "src/js/index.js",
+  "description": "crud with js",
+  "main": "main.js",
   "scripts": {
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/2021-B-Web-Avanzada/wavan-marquez-coronel-diego-alejandro.git"
-  },
-  "keywords": [
-    "javascript",
-    "CRUD",
-    "typescript"
-  ],
-  "devDependencies": {
-    "@types/chalk-pipe": "^2.0.0",
-    "@types/node": "^16.11.12",
-    "@types/node-fetch": "^3.0.3",
-    "inquirer": "^8.2.0"
-  },
-  "dependencies": {
-    "@types/inquirer": "^8.1.3",
-    "chalk-pipe": "^5.1.1",
-    "inquirer-date-prompt": "^2.0.1"
-  },
   "author": "Diego Marquez",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/2021-B-Web-Avanzada/wavan-marquez-coronel-diego-alejandro/issues"
-  },
-  "homepage": "https://github.com/2021-B-Web-Avanzada/wavan-marquez-coronel-diego-alejandro#readme"
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
 }
