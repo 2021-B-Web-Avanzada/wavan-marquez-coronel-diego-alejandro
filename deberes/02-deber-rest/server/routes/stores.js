@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
 
     // Save to DB
     try {
-        const promise = await conjunto.save();
+        const promise = await store.save();
         res.json(promise);
     } catch (e) {
         res.json({message: e});

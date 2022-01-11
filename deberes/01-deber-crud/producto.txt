@@ -1,0 +1,1 @@
+Arduino UNO|23|Placa Electronica|3|undefined|Arduino|3|true|Sun Dec 12 2021 00:00:00 GMT-0800 (Pacific Standard Time)|

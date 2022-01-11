@@ -1,0 +1,18 @@
+<h1>Hola desde Banner</h1>
+<h2>{{nombre}} - {{apellido}}</h2>
+<p>Mascota: {{mascotas.cachetes.edad}}</p>
+<img [src]="urlImg" alt="Estadio de futbol"/>
+
+<a [href]="url" target="_blank">Mas información</a>
+<!--Event binding-->
+<button (click)="ejecutarEventoClick()"
+(blur)="ejecutarEventoBlur()"
+>
+  Event Binding
+</button>
+<!--Pipes reciben datos y transforma para mostrar de manera mas chvre los datos-->
+<p>{{ fecha | date}}</p>
+<p>{{sueldo | currency}}</p>
+<pre>
+  {{mascotas | json}}
+</pre>
