@@ -3,7 +3,7 @@ const router = express.Router();
 const Product = require("../models/Product");
 const path = "/:storeID/product";
 
-// Create document CASA
+// Create document
 router.post(path, async (req, res) => {
     const product = new Product({
         Serie: req.body.Serie,

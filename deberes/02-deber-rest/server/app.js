@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv/config");
 
-const PORT = 27017;
+const PORT = 8080;
 
 // Middleware to parse JSON
 app.use(express.json());
