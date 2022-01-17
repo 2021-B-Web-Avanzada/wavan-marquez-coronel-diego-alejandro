@@ -1,75 +1,84 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {RutaLoginComponent} from "./rutas/ruta-login/ruta-login.component";
-import {RutaNotFoundComponent} from "./rutas/ruta-not-found/ruta-not-found.component";
-import {RutaForbiddenComponent} from "./rutas/ruta-forbidden/ruta-forbidden.component";
-import {RutaInicioComponent} from "./rutas/ruta-inicio/ruta-inicio.component";
-import {RutaAppComponent} from "./rutas/ruta-app/ruta-app.component";
-import {RutaPostComponent} from "./rutas/ruta-post/ruta-post.component";
-import {RutaUsuarioComponent} from "./rutas/ruta-usuario/ruta-usuario.component";
-import {EstaLogeadoGuard} from "./services/auth/esta-logeado.guard";
-import {EsAdministradorGuard} from "./services/auth/esadministrador.guard";
+import {RutaForbiddenComponent} from './rutas/ruta-forbidden/ruta-forbidden.component';
+import {RutaNotFoundComponent} from './rutas/ruta-not-found/ruta-not-found.component';
+import {RutaInicioComponent} from './rutas/ruta-inicio/ruta-inicio.component';
+import {RutaAppComponent} from './rutas/ruta-app/ruta-app.component';
+import {RutaUsuarioComponent} from './rutas/ruta-usuario/ruta-usuario.component';
+import {RutaPostComponent} from './rutas/ruta-post/ruta-post.component';
+import {EstaLogeadoGuard} from './servicios/auth/esta-logeado.guard';
+import {EsAdministradorGuard} from './servicios/auth/es-administrador.guard';
 
 
-//Login
-//Inicio
-//App
-  //usuario
-  //user
-//configuracion
-
+// login
+// inicio
+// app
+// usuario
+// post
+// configuracion
+//
 
 const routes: Routes = [
   {
     path: 'login',
     component: RutaLoginComponent,
   },
+  { // app-routing.module.ts
+    path: 'lazy-inventario',
+    loadChildren: () => import('./modulos/modulo-inventario/modulo-inventario.module')
+      .then(m => m.ModuloInventarioModule)
+  },
   {
-    path: 'not-found',
-    component: RutaNotFoundComponent,
+    path: 'inicio',
+    canActivate: [EstaLogeadoGuard],
+    component: RutaInicioComponent,
+  },
+  // Command Line Interface CLI
+  {
+    path: 'app',
+    component: RutaAppComponent,
+    children: [
+      {
+        path: 'usuario',
+        component: RutaUsuarioComponent,
+      },
+      {
+        path: 'post',
+        component: RutaPostComponent,
+        canActivate: [EsAdministradorGuard]
+      }
+    ]
+  },
+  {
+    path: 'login',
+    component: RutaLoginComponent,
   },
   {
     path: 'forbidden',
     component: RutaForbiddenComponent,
   },
   {
-    path:'inicio',
-    canActivate:[EstaLogeadoGuard],
-    component:RutaInicioComponent
-  },
-  {
-    path:'app',
-    component:RutaAppComponent,
-    children:[
-      {
-        path:'post',
-        canActivate:[EsAdministradorGuard],
-        component:RutaPostComponent
-      },
-      {
-        path:'usuario',
-        component:RutaUsuarioComponent
-      }
-    ]
+    path: 'not-found',
+    component: RutaNotFoundComponent,
   },
   {
     path: '',
     redirectTo: '/login',
-    pathMatch:'full',
-  },
-  {
-    path: 'lazy-inventario',
-    loadChildren:()=>import("./modulos/modulo-inventario/modulo-inventario.module")
-      .then(m=> m.ModuloInventarioModule)
+    pathMatch: 'full'
   },
   {
     path: '**',
-    component:RutaNotFoundComponent
+    component: RutaNotFoundComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(
+    routes,
+    {useHash: true}
+  )],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

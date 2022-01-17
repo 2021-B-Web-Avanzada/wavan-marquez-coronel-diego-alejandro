@@ -1,1 +1,18 @@
-<p>ruta-usuario works!</p>
+<div>
+  <label for="buscarUsuario"
+         class="form-label">
+    Buscar:
+  </label>
+  <input type="text"
+         class="form-control"
+         [(ngModel)]="buscarUsuario"
+         id="buscarUsuario"
+         aria-describedby="buscarUsuarioAyuda">
+  <div id="buscarUsuarioAyuda"
+        class="form-text">
+    Buscar por nombre
+  </div>
+  <div class="d-grip gap-2">
+    <button class="btn btn-primary brn-block">Buscar</button>
+  </div>
+</div>
