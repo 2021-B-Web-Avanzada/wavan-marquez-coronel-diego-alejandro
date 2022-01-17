@@ -10,14 +10,15 @@ import { RutaInicioComponent } from './rutas/ruta-inicio/ruta-inicio.component';
 import { RutaUsuarioComponent } from './rutas/ruta-usuario/ruta-usuario.component';
 import { RutaPostComponent } from './rutas/ruta-post/ruta-post.component';
 import { RutaAppComponent } from './rutas/ruta-app/ruta-app.component';
-import {AuthService} from "./services/auth/authservice";
-import {EstaLogeadoGuard} from "./services/auth/esta-logeado.guard";
-import {EsAdministradorGuard} from "./services/auth/esadministrador.guard";
-import {BannerImagenesModule} from "./componentes/banner-imagenes/banner-imagenes.module";
-import {BannerImagenesComponent} from "./componentes/banner-imagenes/banner-imagenes/banner-imagenes.component";
-
+import {AuthService} from './servicios/auth/auth.service';
+import {EstaLogeadoGuard} from './servicios/auth/esta-logeado.guard';
+import {EsAdministradorGuard} from './servicios/auth/es-administrador.guard';
+import {BannerImagenesModule} from './componentes/banner-imagenes/banner-imagenes.module';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
+  // Componentes
   declarations: [
     AppComponent,
     RutaLoginComponent,
@@ -28,18 +29,24 @@ import {BannerImagenesComponent} from "./componentes/banner-imagenes/banner-imag
     RutaPostComponent,
     RutaAppComponent
   ],
+  // Modulos Importados
   imports: [
+    // app.module.ts
     BrowserModule,
     AppRoutingModule,
-    BannerImagenesModule
+    BannerImagenesModule,
+    HttpClientModule,
+    FormsModule
   ],
-  //servicios
+  // Servicios
   providers: [
-    AuthService,
+    // AuthService,
     EstaLogeadoGuard,
     EsAdministradorGuard
   ],
-  //componente principal
-  bootstrap: [AppComponent]
+  // Componente principal (aqui es donde empieza toodo)
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

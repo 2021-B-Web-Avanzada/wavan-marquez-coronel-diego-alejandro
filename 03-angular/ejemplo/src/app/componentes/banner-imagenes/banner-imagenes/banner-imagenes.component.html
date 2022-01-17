@@ -1,18 +1,42 @@
-<h1>Hola desde Banner</h1>
+<h1 [ngStyle]="{
+'background-color': '#000',
+'color': color,
+'border': 'solid 5px ' + color
+}">
+  HOLA DESDE BANNER
+</h1>
+
+<div class="row">
+  <div class="col-sm-6">
+    <img [src]="urlImagen" class="img-fluid" alt="">
+  </div>
+  <div class="col-sm-6">
+    <img [src]="urlImagen" class="img-fluid" alt="">
+  </div>
+  <div class="col-sm-6">
+    <img [src]="urlImagen" class="img-fluid" alt="">
+  </div>
+</div>
+
+<!-- interpolación {{}} -> TEXTO MUESTRA INTERFAZ -->
 <h2>{{nombre}} - {{apellido}}</h2>
 <p>Mascota: {{mascotas.cachetes.edad}}</p>
-<img [src]="urlImg" alt="Estadio de futbol"/>
+<!-- Property Binding [] -->
 
-<a [href]="url" target="_blank">Mas información</a>
-<!--Event binding-->
+<a [href]="url" target="_blank">
+  Mas informacion
+</a>
+<!-- Event Binding [] -->
 <button (click)="ejecutarEventoClick()"
-(blur)="ejecutarEventoBlur()"
+        (blur)="ejecutarEventoBlur()"
 >
   Event Binding
 </button>
-<!--Pipes reciben datos y transforma para mostrar de manera mas chvre los datos-->
-<p>{{ fecha | date}}</p>
+
+<!-- PIPES -->
+<!-- RECIBE ALGO -> TRANSFORMA  -->
+<p>{{fecha | date:'dd-MM-YYYY'}}</p>
 <p>{{sueldo | currency}}</p>
 <pre>
-  {{mascotas | json}}
+{{mascotas | json}}
 </pre>
