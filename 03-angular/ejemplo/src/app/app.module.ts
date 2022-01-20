@@ -15,7 +15,8 @@ import {EstaLogeadoGuard} from './servicios/auth/esta-logeado.guard';
 import {EsAdministradorGuard} from './servicios/auth/es-administrador.guard';
 import {BannerImagenesModule} from './componentes/banner-imagenes/banner-imagenes.module';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { RutaUsuarioPerfilComponent } from './rutas/ruta-usuario-perfil/ruta-usuario-perfil.component';
 
 @NgModule({
   // Componentes
@@ -27,7 +28,8 @@ import {FormsModule} from "@angular/forms";
     RutaInicioComponent,
     RutaUsuarioComponent,
     RutaPostComponent,
-    RutaAppComponent
+    RutaAppComponent,
+    RutaUsuarioPerfilComponent
   ],
   // Modulos Importados
   imports: [
@@ -36,7 +38,8 @@ import {FormsModule} from "@angular/forms";
     AppRoutingModule,
     BannerImagenesModule,
     HttpClientModule,
-    FormsModule
+    FormsModule, // Template Driven Forms
+    ReactiveFormsModule,
   ],
   // Servicios
   providers: [

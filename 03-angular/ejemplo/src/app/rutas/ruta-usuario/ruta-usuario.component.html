@@ -1,3 +1,4 @@
+
 <div>
   <label for="buscarUsuario"
          class="form-label">
@@ -9,10 +10,19 @@
          id="buscarUsuario"
          aria-describedby="buscarUsuarioAyuda">
   <div id="buscarUsuarioAyuda"
-        class="form-text">
-    Buscar por nombre
+       class="form-text">
+    Busca por nombre.
   </div>
-  <div class="d-grip gap-2">
-    <button class="btn btn-primary brn-block">Buscar</button>
+  <div class="d-grid gap-2">
+    <button class="btn btn-primary btn-block"
+            (click)="actualizarParametrosDeConsulta()"
+    >
+      Buscar
+    </button>
   </div>
+</div>
+
+<div *ngFor="let user of arreglo">
+  <p>{{user.name}}</p>
+  <button (click)="gestionarUsuario(user.id)"> Gestionar </button>
 </div>
