@@ -2,28 +2,28 @@ const mongoose = require("mongoose");
 
 // Schema
 const ProductSchema = mongoose.Schema({
-    Serie: {
+    nombre: {
         type: String,
         required: true,
     },
-    name: {
+    marca: {
         type: String,
         required: true,
     },
-    brand: {
-        type: String,
+    area: {
+        type: Number,
         required: true
     },
-    datePurchase: {
+    fechaAdquisicion: {
         type: Date,
         default: Date.now,
     },
-    available: {
-        type: Boolean,
+    precio: {
+        type: Number,
         required: true,
     },
-    // Tienda
-    tiendaID: mongoose.Schema.Types.ObjectId,
+    // Store
+    storeID: mongoose.Schema.Types.ObjectId,
 });
 
 module.exports = mongoose.model("Products", ProductSchema)

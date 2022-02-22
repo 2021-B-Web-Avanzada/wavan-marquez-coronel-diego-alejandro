@@ -2,23 +2,26 @@ const mongoose = require("mongoose");
 
 // Schema
 const StoreSchema = mongoose.Schema({
-    id: {
+    nombre: {
+        type: String,
+        required: true,
+    },
+    direccion: {
+        type: String,
+        required: true,
+    },
+    area: {
         type: Number,
         required: true,
     },
-    location: {
-        type: String,
-        required: true,
-    },
-    responsable: {
-        type: String,
-        required: true,
-    },
-    openingHour: {
+    fechaApertura: {
         type: Date,
         default: Date.now,
     },
-
+    estrellas: {
+        type: Number,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model("Stores", StoreSchema);

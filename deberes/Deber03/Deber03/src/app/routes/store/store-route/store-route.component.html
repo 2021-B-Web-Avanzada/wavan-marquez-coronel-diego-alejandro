@@ -1,0 +1,18 @@
+<!-- Breadcrumb -->
+<nav class="container pt-4" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">Visualizar tiendas</li>
+  </ol>
+</nav>
+<!-- Content -->
+<div class="d-flex flex-row justify-content-between px-5 py-3">
+  <h3 *ngIf="listaStore.length > 0;">Las tiendas registradas son:</h3>
+  <h3 *ngIf="listaStore.length == 0;">No existen tiendas registradas</h3>
+  <a [routerLink]="['/store', 'crearStore']" class="btn btn-primary">Nueva tienda</a>
+</div>
+<div class="d-flex flex-row flex-wrap justify-content-start">
+  <app-store *ngFor="let store of listaStore;"
+                [store]="store"
+                class="my-3 mx-4"
+  ></app-store>
+</div>

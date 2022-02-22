@@ -13,10 +13,22 @@ export class UserJPHService {
     private readonly httpClient:HttpClient
   ) { }
 
-  buscarTodos(): Observable<UserJphInterface[]>{
+  buscarTodos(parametrosConsulta?:any): Observable<UserJphInterface[]>{
     const url = environment.urlJPC + '/users';
+    Object
+      .keys(parametrosConsulta)
+      .forEach( k => {
+        if(!parametrosConsulta[k]){
+          delete parametrosConsulta[k]
+        }
+      })
     return this.httpClient
-      .get(url)
+      .get(
+        url,
+        {
+          params: parametrosConsulta,
+        }
+      )
       .pipe(
         map(
           (resultadoEnData) => resultadoEnData as UserJphInterface[]

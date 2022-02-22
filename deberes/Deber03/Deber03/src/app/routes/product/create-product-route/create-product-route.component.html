@@ -1,0 +1,106 @@
+<!-- Breadcrumb -->
+<nav class="container pt-4" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/store']">Visualizar tiendas</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/store', storeID, 'product']">Visualizar productos del tiendas</a></li>
+    <li class="breadcrumb-item active">Crear nuevo producto</li>
+  </ol>
+</nav>
+<!-- Content -->
+<div class="d-flex flex-row justify-content-center px-5 py-3">
+  <h3>Crear nuevo producto</h3>
+</div>
+<div class="container d-flex flex-row justify-content-center" *ngIf="formProduct">
+  <form [formGroup]="formProduct" class="col-6">
+    <!-- Nombre -->
+    <label for="nombre" class="form-label pt-3">Nombre:</label>
+    <input id="nombre" formControlName="nombre" type="text" class="form-control" placeholder="Ingrese el nombre del producto">
+    <div *ngIf="formProduct.get('nombre');">
+      <div class="alert alert-warning" role="alert" *ngIf="formProduct.get('nombre')?.invalid &&
+                                                           formProduct.get('nombre')?.touched &&
+                                                           formProduct.get('nombre')?.dirty">
+        <span *ngIf="formProduct.get('nombre')?.hasError('required')">
+          Nombre requerido
+        </span>
+        <span *ngIf="formProduct.get('nombre')?.hasError('minlength')">
+          El nombre debe contener al menos {{this.validationOptions.nombreMinLength}} caracteres
+        </span>
+        <span *ngIf="formProduct.get('nombre')?.hasError('maxlength')">
+          El nombre debe contener un máximo de {{this.validationOptions.nombreMaxLength}} caracteres
+        </span>
+      </div>
+    </div>
+    <!-- Marca -->
+    <label for="marca" class="form-label pt-3">Marca:</label>
+    <textarea id="marca" formControlName="marca" class="form-control" placeholder="Ingrese la marca del producto" rows="2"></textarea>
+    <div *ngIf="formProduct.get('marca');">
+      <div class="alert alert-warning" role="alert" *ngIf="formProduct.get('marca')?.invalid &&
+                                                           formProduct.get('marca')?.touched &&
+                                                           formProduct.get('marca')?.dirty">
+        <span *ngIf="formProduct.get('marca')?.hasError('required')">
+          Marca requerida
+        </span>
+        <span *ngIf="formProduct.get('marca')?.hasError('minlength')">
+          La marca debe contener al menos {{this.validationOptions.marcaMinLength}} caracteres
+        </span>
+        <span *ngIf="formProduct.get('marca')?.hasError('maxlength')">
+          La marca debe contener un máximo de {{this.validationOptions.marcaMaxLength}} caracteres
+        </span>
+      </div>
+    </div>
+    <!-- Unidades -->
+    <label for="unidad" class="form-label pt-3">Unidades disponibles:</label>
+    <input id="unidad" formControlName="unidad" type="number" class="form-control" placeholder="Ingrese la cantidad de productos">
+    <div *ngIf="formProduct.get('unidad');">
+      <div class="alert alert-warning" role="alert" *ngIf="formProduct.get('unidad')?.invalid &&
+                                                           formProduct.get('unidad')?.touched &&
+                                                           formProduct.get('unidad')?.dirty">
+        <span *ngIf="formProduct.get('unidad')?.hasError('required')">
+          Unidad requerida
+        </span>
+        <span *ngIf="formProduct.get('unidad')?.hasError('min')">
+          El cantidad minima es de {{this.validationOptions.unidadMin}} unidades
+        </span>
+        <span *ngIf="formProduct.get('unidad')?.hasError('max')">
+          La cantidad maxima es de {{this.validationOptions.unidadMax}} unidades
+        </span>
+      </div>
+    </div>
+    <!-- Fecha de adquisicion -->
+    <label for="fechaAdquisicion" class="form-label pt-3">Fecha de adquisicion:</label>
+    <input id="fechaAdquisicion" formControlName="fechaAdquisicion" type="date" class="form-control" [max]="today">
+    <div *ngIf="formProduct.get('fechaAdquisicion');">
+      <div class="alert alert-warning" role="alert" *ngIf="formProduct.get('fechaAdquisicion')?.touched &&
+                                                           !formProduct.get('fechaAdquisicion')?.dirty">
+        <span>Fecha requerida</span>
+      </div>
+    </div>
+    <!-- Precio -->
+    <label for="precio" class="form-label pt-3">Precio ($):</label>
+    <input id="precio" formControlName="precio" type="number" class="form-control" placeholder="Ingrese el precio del producto">
+    <div *ngIf="formProduct.get('precio');">
+      <div class="alert alert-warning" role="alert" *ngIf="formProduct.get('precio')?.invalid &&
+                                                           formProduct.get('precio')?.touched &&
+                                                           formProduct.get('precio')?.dirty">
+        <span *ngIf="formProduct.get('precio')?.hasError('required')">
+          Precio requerido
+        </span>
+        <span *ngIf="formProduct.get('precio')?.hasError('min')">
+          El precio mínimo es de {{this.validationOptions.precioMin | currency }}
+        </span>
+        <span *ngIf="formProduct.get('precio')?.hasError('max')">
+          El precio máximo es de {{this.validationOptions.precioMax | currency }}
+        </span>
+      </div>
+    </div>
+    <!-- Crear store -->
+    <div class="d-flex flex-row justify-content-center pt-4">
+      <button class="btn btn-primary" [disabled]="formProduct.invalid ||
+                                                  !formProduct.get('fechaAdquisicion')?.touched ||
+                                                  !formProduct.get('fechaAdquisicion')?.dirty"
+              (click)="createProduct()">
+        Crear producto
+      </button>
+    </div>
+  </form>
+</div>

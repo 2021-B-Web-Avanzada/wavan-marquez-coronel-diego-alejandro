@@ -5,10 +5,11 @@ const Store = require("../models/Store");
 // Create document STORE
 router.post("/", async (req, res) => {
     const store = new Store({
-        id: req.body.id,
-        location: req.body.location,
-        responsable: req.body.responsable,
-        openingHour: req.body.openingHour,
+        nombre: req.body.nombre,
+        direccion: req.body.direccion,
+        area: req.body.area,
+        fechaApertura: req.body.fechaApertura,
+        estrellas: req.body.estrellas,
     });
 
     // Save to DB
@@ -46,10 +47,11 @@ router.patch("/:storeID", async (req, res) => {
         const store = await Store.updateOne(
             { _id: req.params.storeID },
             { $set: {
-                    id: req.body.id,
-                    location: req.body.location,
-                    responsable: req.body.responsable,
-                    openingHour: req.body.openingHour,
+                    nombre: req.body.nombre,
+                    direccion: req.body.direccion,
+                    area: req.body.area,
+                    fechaApertura: req.body.fechaApertura,
+                    estrellas: req.body.estrellas,
                 }}
         );
         res.json(store);
