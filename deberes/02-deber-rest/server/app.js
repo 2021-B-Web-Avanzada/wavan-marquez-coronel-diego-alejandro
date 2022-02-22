@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require('cors');
 require("dotenv/config");
 
 const PORT = 8080;
@@ -12,7 +13,7 @@ app.use(express.json());
 app.listen(PORT, () => {
     console.log(`Started at http://localhost:${PORT}`);
 });
-
+app.use(cors({origin: 'http://localhost:4200'}));
 app.get("/", (req, res) => {
     res.send("API\nDiego Marquez");
 });

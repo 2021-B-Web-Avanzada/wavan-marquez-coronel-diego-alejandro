@@ -24,4 +24,4 @@ const StoreSchema = mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("Stores", StoreSchema);
+module.exports = mongoose.model('Store', StoreSchema);

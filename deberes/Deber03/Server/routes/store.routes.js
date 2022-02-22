@@ -1,6 +1,6 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Store = require("../models/Store");
+const Store = require("../models/store.js");
 
 // Create document STORE
 router.post("/", async (req, res) => {

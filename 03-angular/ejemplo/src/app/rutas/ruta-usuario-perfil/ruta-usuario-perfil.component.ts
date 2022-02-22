@@ -68,6 +68,7 @@ export class RutaUsuarioPerfilComponent implements OnInit {
         {
           next: (data) => {
             this.usuarioActual = data;
+
           },
           error: (error) => {
             console.error(error)
