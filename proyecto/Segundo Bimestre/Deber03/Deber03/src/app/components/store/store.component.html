@@ -1,0 +1,23 @@
+<div class="card border-0 h-100">
+  <div class="card-header d-flex justify-content-center align-items-center">
+    <h5 class="card-title text-center text-break pt-2">{{store!.nombre}}</h5>
+  </div>
+  <div class="card-body d-flex align-items-center">
+    <div>
+      <p class="text-break"><strong>Dirección: </strong>{{store!.direccion}}</p>
+      <p><strong>Área: </strong>{{store!.area}} m²</p>
+      <p><strong>Fecha de apertura: </strong>{{store!.fechaApertura | date}}</p>
+      <p class="text-center">
+        <span id="estrellas">{{store!.estrellas}}</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/1077px-Star_icon_stylized.svg.png" alt="" width="20" height="20" class="d-inline-block align-text-top mx-1">
+      </p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex flex-row justify-content-evenly">
+      <button class="btn btn-success" (click)="readProducts()">Ver productos</button>
+      <button class="btn btn-primary" (click)="updateStore()">Editar</button>
+      <button class="btn btn-danger" (click)="deleteStore()">Borrar</button>
+    </div>
+  </div>
+</div>

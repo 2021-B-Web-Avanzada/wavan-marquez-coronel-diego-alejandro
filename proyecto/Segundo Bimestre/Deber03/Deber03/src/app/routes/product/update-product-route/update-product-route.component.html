@@ -1,0 +1,106 @@
+<!-- Breadcrumb -->
+<nav class="container pt-4" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/store']">Visualizar tiendas</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/store', storeID, 'product']">Visualizar los productos de la tienda electronica</a></li>
+    <li class="breadcrumb-item active">Actualizar datos del producto</li>
+  </ol>
+</nav>
+<!-- Content -->
+<div class="d-flex flex-row justify-content-center px-5 py-3">
+  <h3>Actualizar el producto electronico</h3>
+</div>
+<div class="container d-flex flex-row justify-content-center" *ngIf="formUpdateProduct">
+  <form [formGroup]="formUpdateProduct" class="col-6">
+    <!-- Nombre -->
+    <label for="nombre" class="form-label pt-3">Nombre:</label>
+    <input id="nombre" formControlName="nombre" type="text" class="form-control" placeholder="Ingrese el nombre del producto">
+    <div *ngIf="formUpdateProduct.get('nombre');">
+      <div class="alert alert-warning" role="alert" *ngIf="formUpdateProduct.get('nombre')?.invalid &&
+                                                           formUpdateProduct.get('nombre')?.touched &&
+                                                           formUpdateProduct.get('nombre')?.dirty">
+        <span *ngIf="formUpdateProduct.get('nombre')?.hasError('required')">
+          Nombre requerido
+        </span>
+        <span *ngIf="formUpdateProduct.get('nombre')?.hasError('minlength')">
+          El nombre debe contener al menos {{this.validationOptions.nombreMinLength}} caracteres
+        </span>
+        <span *ngIf="formUpdateProduct.get('nombre')?.hasError('maxlength')">
+          El nombre debe contener un máximo de {{this.validationOptions.nombreMaxLength}} caracteres
+        </span>
+      </div>
+    </div>
+    <!-- Marca -->
+    <label for="marca" class="form-label pt-3">Marca:</label>
+    <textarea id="marca" formControlName="marca" class="form-control" placeholder="Ingrese la marca del producto" rows="2"></textarea>
+    <div *ngIf="formUpdateProduct.get('marca');">
+      <div class="alert alert-warning" role="alert" *ngIf="formUpdateProduct.get('marca')?.invalid &&
+                                                           formUpdateProduct.get('marca')?.touched &&
+                                                           formUpdateProduct.get('marca')?.dirty">
+        <span *ngIf="formUpdateProduct.get('marca')?.hasError('required')">
+          Marca requerida
+        </span>
+        <span *ngIf="formUpdateProduct.get('marca')?.hasError('minlength')">
+          La marca debe contener al menos {{this.validationOptions.marcaMinLength}} caracteres
+        </span>
+        <span *ngIf="formUpdateProduct.get('marca')?.hasError('maxlength')">
+          La marca debe contener un máximo de {{this.validationOptions.marcaMaxLength}} caracteres
+        </span>
+      </div>
+    </div>
+    <!-- Unidad -->
+    <label for="unidad" class="form-label pt-3">Unidades disponibles:</label>
+    <input id="unidad" formControlName="unidad" type="number" class="form-control" placeholder="Ingrese las unidades disponibles">
+    <div *ngIf="formUpdateProduct.get('unidad');">
+      <div class="alert alert-warning" role="alert" *ngIf="formUpdateProduct.get('unidad')?.invalid &&
+                                                           formUpdateProduct.get('unidad')?.touched &&
+                                                           formUpdateProduct.get('unidad')?.dirty">
+        <span *ngIf="formUpdateProduct.get('unidad')?.hasError('required')">
+          Valor requerido
+        </span>
+        <span *ngIf="formUpdateProduct.get('unidad')?.hasError('min')">
+          La cantidad minima es de {{this.validationOptions.unidadMin}} unidades
+        </span>
+        <span *ngIf="formUpdateProduct.get('unidad')?.hasError('max')">
+          La catidad máxima es de {{this.validationOptions.unidadMax}} unidades
+        </span>
+      </div>
+    </div>
+    <!-- Fecha de adquisicion-->
+    <label for="fechaAdquisicion" class="form-label pt-3">Fecha de adquisicion:</label>
+    <input id="fechaAdquisicion" formControlName="fechaAdquisicion" type="date" class="form-control" [max]="today" [value]="today">
+    <div *ngIf="formUpdateProduct.get('fechaAdquisicion');">
+      <div class="alert alert-warning" role="alert" *ngIf="formUpdateProduct.get('fechaAdquisicion')?.touched &&
+                                                           !formUpdateProduct.get('fechaAdquisicion')?.dirty">
+        <span>Fecha requerida</span>
+      </div>
+    </div>
+    <!-- Precio -->
+    <label for="precio" class="form-label pt-3">Precio ($):</label>
+    <input id="precio" formControlName="precio" type="number" class="form-control" placeholder="Ingrese el precio del producto">
+    <div *ngIf="formUpdateProduct.get('precio');">
+      <div class="alert alert-warning" role="alert" *ngIf="formUpdateProduct.get('precio')?.invalid &&
+                                                           formUpdateProduct.get('precio')?.touched &&
+                                                           formUpdateProduct.get('precio')?.dirty">
+        <span *ngIf="formUpdateProduct.get('precio')?.hasError('required')">
+          Precio requerido
+        </span>
+        <span *ngIf="formUpdateProduct.get('precio')?.hasError('min')">
+          El precio mínimo es de {{this.validationOptions.precioMin | currency }}
+        </span>
+        <span *ngIf="formUpdateProduct.get('precio')?.hasError('max')">
+          El precio máximo es de {{this.validationOptions.precioMax | currency }}
+        </span>
+      </div>
+    </div>
+    <!-- Crear product -->
+    <div class="d-flex flex-row justify-content-center pt-4">
+      <button class="btn btn-primary" [disabled]="formUpdateProduct.invalid ||
+                                                  !formUpdateProduct.get('fechaAdquisicion')?.touched ||
+                                                  !formUpdateProduct.get('fechaAdquisicion')?.dirty"
+              (click)="updateProduct()">
+        Actualizar datos
+      </button>
+    </div>
+  </form>
+</div>
